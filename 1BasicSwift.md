@@ -133,7 +133,114 @@ Temporary code disabling: It allows you to disable or skip over sections of code
 However, semicolons are required if you want to write multiple separate statements on a single line:
 let name = "sanjeev Gaikwad"; print(name)
 
+==> Swift doesn’t require you to write a semicolon (;) after each statement in your code, although you can do so if you wish. However, semicolons are required if you want to write multiple separate statements on a single line:
+let Animal = "Deer" ; print(Animal)
 
+==>Integers are whole numbers with no fractional component, such as 42 and -23. Integers are either signed (positive, zero, or negative) or unsigned (positive or zero)
+
+==> Swift also provides an unsigned integer type, UInt, Use UInt only when you specifically need an unsigned integer type with the same size as the platform’s native word size.
+ If this isn’t the case, Int is preferred, even when the values to be stored are known to be nonnegative.
+
+==> Floating-point numbers are numbers with a fractional component, such as 3.14159, 0.1, and -273.15.
+Swift provides two signed floating-point number types: Double, Float
+Double has a precision of at least 15 decimal digits, whereas the precision of Float can be as little as 6 decimal digits.
+
+** Type Safety & Type Inference
+--> Swift is type safe, it performs type checks when compiling your code and flags any mismatched types as errors.
+--> If you don’t specify the type of value you need, Swift uses type inference to work out the appropriate type.
+Type inference enables a compiler to deduce the type of a particular expression automatically when it compiles your code, simply by examining the values you provide.
+code:
+let meaningOfLife = 42   //type inference enable compiler to declare it as Int
+let pi = 3.14159 //type inference enable compiler to declare it as float value based on value.
+
+--> Swift always chooses Double (rather than Float) when inferring the type of floating-point numbers.
+--> If you combine integer and floating-point literals in an expression, a type of Double will be inferred from the context:
+let anotherPi = 3 + 0.14159
+// anotherPi is also inferred to be of type Double
+
+==> Type aliases define an alternative name for an existing type. You define type aliases with the typealias keyword.
+Code :
+typealias AudioSample = UInt16
+//Once you define a type alias, you can use the alias anywhere you might use the original name:
+var maxAmplitudeFound = AudioSample.min
+// maxAmplitudeFound is now 0
+
+### Boolean
+Swift has a basic Boolean type, called Bool. Boolean values are referred to as logical, because they can only ever be true or false.
+Code: 
+if turnipsAreDelicious {
+    print("Mmm, tasty turnips!")
+} else {
+    print("Eww, turnips are horrible.")
+}
+// Prints "Eww, turnips are horrible."
+### Tuple
+-->Tuples group multiple values into a single compound value. The values within a tuple can be of any type and don’t have to be of the same type as each other.
+(404, "Not Found") is a tuple that describes an HTTP status code.
+
+let http404Error = (404, "Not Found")
+// http404Error is of type (Int, String), and equals (404, "Not Found")
+
+--> You can decompose a tuple’s contents into separate constants or variables, which you then access as usual:
+Code: 
+let (statusCode, statusMessage) = http404Error
+print("The status code is \(statusCode)")
+// Prints "The status code is 404"
+print("The status message is \(statusMessage)")
+// Prints "The status message is Not Found"
+
+--> If you only need some of the tuple’s values, ignore parts of the tuple with an underscore (_) when you decompose the tuple:
+
+code:
+let (justTheStatusCode, _) = http404Error
+print("The status code is \(justTheStatusCode)")
+// Prints "The status code is 404"
+
+--> Alternatively, access the individual element values in a tuple using index numbers starting at zero:
+print("The status code is \(http404Error.0)")
+code:
+// Prints "The status code is 404"
+print("The status message is \(http404Error.1)")
+// Prints "The status message is Not Found"
+
+--> You can name the individual elements in a tuple when the tuple is defined:
+let http200Status = (statusCode: 200, description: "OK")
+
+--> If you name the elements in a tuple, you can use the element names to access the values of those elements:
+
+print("The status code is \(http200Status.statusCode)")
+// Prints "The status code is 200"
+print("The status message is \(http200Status.description)")
+// Prints "The status message is OK"
+
+Tuples are particularly useful as the return values of functions.
+
+Note :  #### Tuples are useful for simple groups of related values. They’re not suited to the creation of complex data structures.
+ If your data structure is likely to be more complex, model it as a class or structure, rather than as a tuple.
+
+## Optionals
+You use optionals in situations where a value may be absent. An optional represents two possibilities:
+Either there is a value of a specified type, and you can unwrap the optional to access that value, or there isn’t a value at all.
+
+Code:
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+// The type of convertedNumber is "optional Int"
+
+Because the initializer in the code above might fail, it returns an optional Int, rather than an Int.    
+
+## nil
+You set an optional variable to a valueless state by assigning it the special value nil:
+code:
+var serverResponseCode: Int? = 404
+// serverResponseCode contains an actual Int value of 404
+serverResponseCode = nil
+// serverResponseCode now contains no value
+
+If you define an optional variable without providing a default value, the variable is automatically set to nil:
+
+var surveyAnswer: String?
+// surveyAnswer is automatically set to nil
 
 
 
