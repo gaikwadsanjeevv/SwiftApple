@@ -38,7 +38,7 @@ You declare constants with the let keyword and variables with the var keyword.
 code: 
 ```swift
 let MaxNumberOfAttempts = 10;
-var CurrentLoginAttempt = 2;```
+var CurrentLoginAttempt = 2;
 
 
 In this example below, the maximum number of login attempts is constant, and its value depends on the environment. 
