@@ -31,13 +31,14 @@ Swift can be compiled to WebAssembly, enabling you to run Swift code in the brow
 ==> In Swift, this line of code is a complete program. You don’t need to import a separate library for functionality like outputting text or handling strings.
 Code written at global scope is used as the entry point for the program, so you don’t need a main() function. You also don’t need to write semicolons at the end of every statement.
 code: 
-print("Hello sanjeev")
+print("Hello sanjeev")`
 
 ==> The value of a constant can’t be changed once it’s set, whereas a variable can be set to a different value in the future. 
 You declare constants with the let keyword and variables with the var keyword. 
 code: 
+```swift
 let MaxNumberOfAttempts = 10;
-var CurrentLoginAttempt = 2;
+var CurrentLoginAttempt = 2;```
 
 
 In this example below, the maximum number of login attempts is constant, and its value depends on the environment. 
